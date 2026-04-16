@@ -2,11 +2,11 @@
 
 ## Functional Requirements
 
-- Return a list of articles. You can add filters such as publishing date, or tags.
-- Return a single article, specified by the ID of the article.
-- Create a new article to be published.
-- Delete a single article, specified by the ID.
-- Update a single article, again, you’d specify the article using its ID.
+- [ ] Return a list of articles. You can add filters such as publishing date, or tags.
+- [ ] Return a single article, specified by the ID of the article.
+- [ ] Create a new article to be published.
+- [ ] Delete a single article, specified by the ID.
+- [ ] Update a single article, again, you’d specify the article using its ID.
 
 ## Entity Design
 
@@ -22,6 +22,30 @@ Title: string
 ```
 
 ## API Design
+
+POST /articles HTTP/1.1
+Content-Type: application/json
+
+{
+    Categories: string[]
+    Content: string
+    Description: string
+    PublishedAt: DateTime
+    Title: string
+}
+
+HTTP/1.1 201 Created
+Content-Type: application/json
+Location: /articles/1
+
+{
+    Categories: string[]
+    Content: string
+    Description: string
+    Id: int
+    PublishedAt: DateTime
+    Title: string
+}
 
 GET /articles HTTP/1.1
 Content-Type: application/json
