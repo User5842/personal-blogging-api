@@ -3,9 +3,9 @@
 ## Functional Requirements
 
 - [ ] Return a list of articles. You can add filters such as publishing date, or tags.
-- [ ] Return a single article, specified by the ID of the article.
-- [ ] Create a new article to be published.
-- [ ] Delete a single article, specified by the ID.
+- [x] Return a single article, specified by the ID of the article.
+- [x] Create a new article to be published.
+- [x] Delete a single article, specified by the ID.
 - [ ] Update a single article, again, you’d specify the article using its ID.
 
 ## Entity Design
