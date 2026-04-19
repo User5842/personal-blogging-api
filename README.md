@@ -6,7 +6,7 @@
 - [x] Return a single article, specified by the ID of the article.
 - [x] Create a new article to be published.
 - [x] Delete a single article, specified by the ID.
-- [ ] Update a single article, again, you’d specify the article using its ID.
+- [x] Update a single article, again, you’d specify the article using its ID.
 
 ## Entity Design
 

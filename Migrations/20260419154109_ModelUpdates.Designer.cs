@@ -3,6 +3,7 @@ using System;
 using BloggingAPI.Article;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BloggingAPI.Migrations
 {
     [DbContext(typeof(ArticleContext))]
-    partial class ArticleContextModelSnapshot : ModelSnapshot
+    [Migration("20260419154109_ModelUpdates")]
+    partial class ModelUpdates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.6");
@@ -22,6 +25,10 @@ namespace BloggingAPI.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.PrimitiveCollection<string>("Categories")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -43,38 +50,6 @@ namespace BloggingAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Articles");
-                });
-
-            modelBuilder.Entity("BloggingAPI.Article.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("ArticleId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.ToTable("Category");
-                });
-
-            modelBuilder.Entity("BloggingAPI.Article.Category", b =>
-                {
-                    b.HasOne("BloggingAPI.Article.Article", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("ArticleId");
-                });
-
-            modelBuilder.Entity("BloggingAPI.Article.Article", b =>
-                {
-                    b.Navigation("Categories");
                 });
 #pragma warning restore 612, 618
         }
